@@ -3,6 +3,8 @@
 #include <cstdint>
 #include <string>
 
+#include "dll.hpp"
+
 typedef uint32_t glid;
 typedef void *id;
 
@@ -32,25 +34,25 @@ namespace gfx
         TriangleFan = 0x0006
     };
 
-    void init();
+    AMUSE_API void init();
 
-    void clear_color(float r, float g, float b, float a); // Set the clear color
+    AMUSE_API void clear_color(float r, float g, float b, float a); // Set the clear color
 
-    void clear();
+    AMUSE_API void clear();
 
-    void draw(size_t vertex_count, size_t instance_count = 1, size_t first_vertex = 0, size_t first_instance = 0, PrimitiveType primitive_type = PrimitiveType::Triangles);
+    AMUSE_API void draw(size_t vertex_count, size_t instance_count = 1, size_t first_vertex = 0, size_t first_instance = 0, PrimitiveType primitive_type = PrimitiveType::Triangles);
 
-    void draw_instanced(size_t vertex_count, size_t instance_count = 1, size_t first_vertex = 0, size_t first_instance = 0, PrimitiveType primitive_type = PrimitiveType::Triangles);
+    AMUSE_API void draw_instanced(size_t vertex_count, size_t instance_count = 1, size_t first_vertex = 0, size_t first_instance = 0, PrimitiveType primitive_type = PrimitiveType::Triangles);
 
-    void viewport(float x, float y, float width, float height);
+    AMUSE_API void viewport(float x, float y, float width, float height);
 
-    void enable_depth_test(bool enable);
+    AMUSE_API void enable_depth_test(bool enable);
 
-    void enable_backface_culling(bool enable);
+    AMUSE_API void enable_backface_culling(bool enable);
 
-    void enable_blending(bool enable);
+    AMUSE_API void enable_blending(bool enable);
 
-    void unbind_framebuffer();
+    AMUSE_API void unbind_framebuffer();
 
     enum class ShaderType : uint32_t
     {
@@ -69,7 +71,7 @@ namespace gfx
         UnsignedInt = 0x1405
     };
 
-    class ShaderModule // Shader module
+    class AMUSE_API ShaderModule // Shader module
     {
     public:
         glid id = 0; // Shader module id
@@ -83,7 +85,7 @@ namespace gfx
         ~ShaderModule(); // Destructor
     };
 
-    class Attribute
+    class AMUSE_API Attribute
     {
     public:
         glid id = 0;
@@ -95,7 +97,7 @@ namespace gfx
         void disable();
     };
 
-    class Uniform
+    class AMUSE_API Uniform
     {
     public:
         glid id = 0;
@@ -117,7 +119,7 @@ namespace gfx
         void set_mat4(float *value);
     };
 
-    class Pipeline // Pipeline
+    class AMUSE_API Pipeline // Pipeline
     {
     public:
         glid id = 0; // Pipeline id
@@ -157,7 +159,7 @@ namespace gfx
         StreamRead = 0x88E1,
     };
 
-    class Buffer
+    class AMUSE_API Buffer
     {
     public:
         glid id = 0;
@@ -177,7 +179,7 @@ namespace gfx
         void unmap();
     };
 
-    class VertexArray
+    class AMUSE_API VertexArray
     {
     public:
         glid id = 0;
@@ -222,7 +224,7 @@ namespace gfx
         MirrorClampToEdge = 0x8743,
     };
 
-    class Sampler
+    class AMUSE_API Sampler
     {
     public:
         SamplerFilter min_filter;
@@ -233,7 +235,7 @@ namespace gfx
         Sampler(SamplerFilter min_filter, SamplerFilter mag_filter, SamplerWrap wrap_s, SamplerWrap wrap_t) : min_filter(min_filter), mag_filter(mag_filter), wrap_s(wrap_s), wrap_t(wrap_t) {}
     };
 
-    class Image
+    class AMUSE_API Image
     {
     public:
         glid id = 0;
@@ -265,7 +267,7 @@ namespace gfx
         DepthStencil = 0x821A
     };
 
-    class Framebuffer
+    class AMUSE_API Framebuffer
     {
     public:
         glid id = 0;
@@ -279,5 +281,4 @@ namespace gfx
 
         void attach(AttachmentType attachment, Image &image);
     };
-
 }

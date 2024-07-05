@@ -21,7 +21,9 @@
 #include <cmath>
 #include <string>
 
-class Vec2
+#include "dll.hpp"
+
+class AMUSE_API Vec2
 {
 public:
     float x, y;
@@ -179,7 +181,7 @@ public:
     }
 };
 
-class Vec2i
+class AMUSE_API Vec2i
 {
 public:
     int x, y;
@@ -337,7 +339,7 @@ public:
     }
 };
 
-class Vec3
+class AMUSE_API Vec3
 {
 public:
     float x = 0;
@@ -514,7 +516,7 @@ public:
     }
 };
 
-class Vec3i
+class AMUSE_API Vec3i
 {
 public:
     int x, y, z;
@@ -705,7 +707,7 @@ public:
     }
 };
 
-class Vec4
+class AMUSE_API Vec4
 {
 public:
     float x, y, z, w;
@@ -898,9 +900,9 @@ public:
     }
 };
 
-class Quat;
+class AMUSE_API Quat;
 
-class Mat4
+class AMUSE_API Mat4
 {
 public:
     float data[16];
@@ -943,7 +945,7 @@ public:
     Vec4 operator*(const Vec4 &other);
 };
 
-class Quat
+class AMUSE_API Quat
 {
 public:
     float i, j, k, r;

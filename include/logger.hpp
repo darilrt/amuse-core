@@ -28,13 +28,13 @@
 
 #include "dll.hpp"
 
-class AMUSE_API Logger
+class Logger
 {
 public:
     std::string name;
 
-    Logger();
-    Logger(const std::string &name);
+    AMUSE_API Logger();
+    AMUSE_API Logger(const std::string &name);
 
 #ifdef LOGGER_NO_INFO
     template <typename... Args>

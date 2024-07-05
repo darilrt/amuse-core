@@ -28,8 +28,8 @@ add_library(${project_name} SHARED ${SOURCES})
 target_include_directories(${project_name} PUBLIC include)
 
 # Add the SDL2 library
-set(SDL_STATIC ON)
-set(SDL_SHARED OFF)
+option(SDL_STATIC ON)
+option(SDL_SHARED OFF)
 add_subdirectory(vendor/SDL EXCLUDE_FROM_ALL)
 
 # Link the SDL2 library

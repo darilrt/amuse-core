@@ -1,6 +1,7 @@
 #pragma once
 
 #include "core.hpp"
+#include "dll.hpp"
 
 class Transform : public Component
 {
@@ -10,5 +11,5 @@ public:
     Vec3 _euler_angles;
     Vec3 scale;
 
-    Transform();
+    AMUSE_API Transform();
 };

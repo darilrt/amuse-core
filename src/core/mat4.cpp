@@ -48,7 +48,7 @@ Mat4::Mat4(float m00, float m01, float m02, float m03,
 
 void Mat4::print()
 {
-    for (int i, j = 0; i < 4; i++)
+    for (int i = 0, j = 0; i < 4; i++)
     {
         for (j = 0; j < 4; j++)
         {

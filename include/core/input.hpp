@@ -1,11 +1,13 @@
 #pragma once
 
 #include <cstdint>
+
 #include "event_system.hpp"
 #include "math.hpp"
 #include "key_code.hpp"
+#include "dll.hpp"
 
-class Input
+class AMUSE_API Input
 {
 public:
     Input(EventSystem &es);

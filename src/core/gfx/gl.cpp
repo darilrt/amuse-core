@@ -35,22 +35,22 @@ namespace gfx
         const auto _type = (GLenum)primitive_type;
         if (instance_count <= 1)
         {
-            GL_CALL(glDrawArrays(_type, first_vertex, vertex_count));
+            GL_CALL(glDrawArrays(_type, (GLint)first_vertex, (GLsizei)vertex_count));
         }
         else
         {
-            GL_CALL(glDrawArraysInstanced(_type, first_vertex, vertex_count, instance_count));
+            GL_CALL(glDrawArraysInstanced(_type, (GLint)first_vertex, (GLsizei)vertex_count, (GLsizei)instance_count));
         }
     }
 
     void draw_instanced(size_t vertex_count, size_t instance_count, size_t first_vertex, size_t first_instance, PrimitiveType primitive_type)
     {
-        GL_CALL(glDrawArraysInstanced((GLenum)primitive_type, first_vertex, vertex_count, instance_count));
+        GL_CALL(glDrawArraysInstanced((GLenum)primitive_type, (GLint)first_vertex, (GLsizei)vertex_count, (GLsizei)instance_count));
     }
 
     void viewport(float x, float y, float width, float height)
     {
-        glViewport(x, y, width, height);
+        glViewport((GLint)x, (GLint)y, (GLsizei)width, (GLsizei)height);
     }
 
     void enable_depth_test(bool enable)
@@ -128,7 +128,7 @@ namespace gfx
 
     void Attribute::set_pointer(void *data, size_t size, size_t stride)
     {
-        GL_CALL(glVertexAttribPointer(id, size, GL_FLOAT, GL_FALSE, stride, data));
+        GL_CALL(glVertexAttribPointer(id, (GLint)size, GL_FLOAT, GL_FALSE, (GLsizei)stride, data));
     }
 
     void Attribute::enable()
@@ -260,14 +260,14 @@ namespace gfx
     void Buffer::set_data(const void *data, size_t size, BufferUsage usage)
     {
         this->bind();
-        GL_CALL(glBufferData((GLenum)type, size, data, (GLenum)usage));
+        GL_CALL(glBufferData((GLenum)type, (GLsizeiptr)size, data, (GLenum)usage));
         this->unbind();
     }
 
     void Buffer::set_sub_data(const void *data, size_t size, size_t offset)
     {
         this->bind();
-        GL_CALL(glBufferSubData((GLenum)type, offset, size, data));
+        GL_CALL(glBufferSubData((GLenum)type, (GLintptr)offset, (GLsizeiptr)size, data));
         this->unbind();
     }
 
@@ -309,8 +309,8 @@ namespace gfx
     {
         bind();
         buffer.bind();
-        GL_CALL(glVertexAttribPointer(index, size, (GLenum)type, GL_FALSE, stride, (void *)offset));
-        GL_CALL(glEnableVertexAttribArray(index));
+        GL_CALL(glVertexAttribPointer((GLuint)index, (GLint)size, (GLenum)type, GL_FALSE, (GLsizei)stride, (void *)offset));
+        GL_CALL(glEnableVertexAttribArray((GLuint)index));
         buffer.unbind();
         unbind();
     }
@@ -325,14 +325,14 @@ namespace gfx
     void VertexArray::enable_attribute(size_t index)
     {
         bind();
-        GL_CALL(glEnableVertexAttribArray(index));
+        GL_CALL(glEnableVertexAttribArray((GLuint)index));
         unbind();
     }
 
     void VertexArray::set_attribute_divisor(size_t index, size_t divisor)
     {
         bind();
-        GL_CALL(glVertexAttribDivisor(index, divisor));
+        GL_CALL(glVertexAttribDivisor((GLuint)index, (GLuint)divisor));
         unbind();
     }
 
@@ -354,7 +354,7 @@ namespace gfx
     void Image::set_data(const void *data, size_t width, size_t height, size_t channels)
     {
         GL_CALL(glBindTexture(GL_TEXTURE_2D, id));
-        GL_CALL(glTexImage2D(GL_TEXTURE_2D, 0, (GLenum)format, width, height, 0, (GLenum)format, GL_UNSIGNED_BYTE, data));
+        GL_CALL(glTexImage2D(GL_TEXTURE_2D, 0, (GLenum)format, (GLsizei)width, (GLsizei)height, 0, (GLenum)format, GL_UNSIGNED_BYTE, data));
         GL_CALL(glGenerateMipmap(GL_TEXTURE_2D));
         GL_CALL(glBindTexture(GL_TEXTURE_2D, 0));
     }

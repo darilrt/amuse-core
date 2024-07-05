@@ -31,10 +31,10 @@ Quat Quat::from_euler(const Vec3 &euler)
     double s3 = sin(euler.z / 2.0);
 
     return Quat(
-        s1 * c2 * c3 + c1 * s2 * s3,
-        c1 * s2 * c3 - s1 * c2 * s3,
-        c1 * c2 * s3 + s1 * s2 * c3,
-        c1 * c2 * c3 - s1 * s2 * s3);
+        (float)(s1 * c2 * c3 + c1 * s2 * s3),
+        (float)(c1 * s2 * c3 - s1 * c2 * s3),
+        (float)(c1 * c2 * s3 + s1 * s2 * c3),
+        (float)(c1 * c2 * c3 - s1 * s2 * s3));
 }
 
 Quat Quat::from_axis_angle(const Vec3 &axis, float angle)

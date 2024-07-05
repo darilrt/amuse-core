@@ -128,13 +128,13 @@ void Actor::save()
     file.close();
 }
 
-void Actor::add_component(Shared<Component> component)
+AMUSE_API void Actor::add_component(Shared<Component> component)
 {
     component->actor = this;
     components.push_back(component);
 }
 
-Shared<Component> Actor::get_component(const std::string &name)
+AMUSE_API Shared<Component> Actor::get_component(const std::string &name)
 {
     for (auto &component : components)
     {
@@ -145,7 +145,7 @@ Shared<Component> Actor::get_component(const std::string &name)
     return nullptr;
 }
 
-void Actor::remove_component(Shared<Component> component)
+AMUSE_API void Actor::remove_component(Shared<Component> component)
 {
     auto it = std::find(components.begin(), components.end(), component);
 

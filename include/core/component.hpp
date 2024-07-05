@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "dll.hpp"
+
 class Actor;
 
 class Component
@@ -11,7 +13,7 @@ public:
     bool enabled = true;
     std::string _name;
 
-    virtual void on_start() {}
+    virtual AMUSE_API void on_start() {}
 
-    virtual void on_update() {}
+    virtual AMUSE_API void on_update() {}
 };

@@ -12,7 +12,7 @@ Mesh::Mesh(std::vector<float> vertices, std::vector<float> uv) : vao(), vbo(gfx:
 
 void Mesh::set(std::vector<float> vertices, std::vector<float> uv)
 {
-    vertex_count = vertices.size() / 3;
+    vertex_count = (uint32_t)(vertices.size() / 3);
 
     vbo.set_data(vertices.data(), vertices.size() * sizeof(float), gfx::BufferUsage::StaticDraw);
     tbo.set_data(uv.data(), uv.size() * sizeof(float), gfx::BufferUsage::StaticDraw);
