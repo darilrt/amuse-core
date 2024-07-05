@@ -15,3 +15,5 @@
 #include "core/component_registry.hpp"
 #include "core/actor.hpp"
 #include "core/engine.hpp"
+
+#include "core/components/transform.hpp"
