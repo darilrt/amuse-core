@@ -26,27 +26,8 @@
 
 #include "dll.hpp"
 
-#if defined(__clang__)
+#define IMGUI_API AMUSE_API
 
-#define IMGUI_API
-
-#elif defined(__GNUC__) || defined(__GNUG__)
-
-#ifdef AMUSE_CORE_EXPORT
-#define IMGUI_API __attribute__((visibility("default")))
-#else
-#define IMGUI_API
-#endif // AMUSE_CORE_EXPOR
-
-#elif defined(_MSC_VER)
-
-#ifdef AMUSE_CORE_EXPORT
-#define IMGUI_API __declspec(dllexport)
-#else
-#define IMGUI_API __declspec(dllimport)
-#endif // AMUSE_CORE_EXPORT
-
-#endif
 //---- Don't define obsolete functions/enums/behaviors. Consider enabling from time to time after updating to clean your code of obsolete function/names.
 // #define IMGUI_DISABLE_OBSOLETE_FUNCTIONS
 // #define IMGUI_DISABLE_OBSOLETE_KEYIO                      // 1.87+ disable legacy io.KeyMap[]+io.KeysDown[] in favor io.AddKeyEvent(). This is automatically done by IMGUI_DISABLE_OBSOLETE_FUNCTIONS.

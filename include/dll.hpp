@@ -2,7 +2,11 @@
 
 #if defined(__clang__)
 
-#define AMUSE_API
+#ifdef AMUSE_CORE_EXPORT
+#define AMUSE_API __declspec(dllexport)
+#else
+#define AMUSE_API __declspec(dllimport)
+#endif // AMUSE_CORE_EXPORT
 
 #elif defined(__GNUC__) || defined(__GNUG__)
 
