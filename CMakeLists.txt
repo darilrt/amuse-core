@@ -28,8 +28,8 @@ target_include_directories(AmuseCore PUBLIC include)
 target_include_directories(AmuseCore PUBLIC vendor/SDL/include)
 
 # Add the SDL2 library
-option(SDL_STATIC ON)
-option(SDL_SHARED OFF)
+set(SDL_STATIC ON)
+set(SDL_SHARED OFF)
 add_subdirectory(vendor/SDL)
 
 # Link the SDL2 library
