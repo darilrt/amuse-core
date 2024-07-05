@@ -33,5 +33,5 @@ option(SDL_SHARED OFF)
 add_subdirectory(vendor/SDL EXCLUDE_FROM_ALL)
 
 # Link the SDL2 library
-target_link_libraries(${project_name} SDL2::SDL2main)
-target_link_libraries(${project_name} SDL2::SDL2-static)
+target_link_libraries(${project_name} SDL2main)
+target_link_libraries(${project_name} SDL2)
