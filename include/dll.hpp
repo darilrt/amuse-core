@@ -8,7 +8,7 @@
 #endif // AMUSE_CORE_EXPORT
 #elif defined(__GNUC__)
 #ifdef AMUSE_CORE_EXPORT
-#define AMUSE_API __declspec(dllexport)
+#define AMUSE_API __attribute__((visibility("default")))
 #else
 #define AMUSE_API
 #endif // AMUSE_CORE_EXPORT
