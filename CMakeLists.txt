@@ -22,6 +22,8 @@ file(GLOB_RECURSE SOURCES
 
 add_library(AmuseCore SHARED ${SOURCES})
 
+# Add flag -fPIC
+set_property(TARGET AmuseCore PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 # Add the include directory
 target_include_directories(AmuseCore PUBLIC include)
