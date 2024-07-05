@@ -24,8 +24,8 @@
 
 #include <string>
 #include <iostream>
-#include <format>
 
+#include "format.hpp"
 #include "dll.hpp"
 
 class Logger
@@ -38,31 +38,31 @@ public:
 
 #ifdef LOGGER_NO_INFO
     template <typename... Args>
-    void info(std::format_string<Args...> fmt, Args &&...args) {}
+    void info(const std::string &fmt, Args &&...args) {}
 #else
     template <typename... Args>
-    void info(std::format_string<Args...> fmt, Args &&...args)
+    void info(const std::string &_fmt, Args &&...args)
     {
-        std::cout << std::format("[{}][INFO] {}", name, std::format(fmt, std::forward<Args>(args)...)) << std::endl;
+        std::cout << fmt("[{}][INFO] {}", name, fmt(_fmt, args...)) << std::endl;
     }
 #endif
 
     template <typename... Args>
-    void warn(std::format_string<Args...> fmt, Args &&...args)
+    void warn(const std::string &_fmt, Args &&...args)
     {
-        std::cout << std::format("[{}][WARN] {}", name, std::format(fmt, std::forward<Args>(args)...)) << std::endl;
+        std::cout << fmt("[{}][WARN] {}", name, fmt(_fmt, args...)) << std::endl;
     }
 
     template <typename... Args>
-    void error(std::format_string<Args...> fmt, Args &&...args)
+    void error(const std::string &_fmt, Args &&...args)
     {
-        std::cerr << std::format("[{}][ERROR] {}", name, std::format(fmt, std::forward<Args>(args)...)) << std::endl;
+        std::cerr << fmt("[{}][ERROR] {}", name, fmt(_fmt, args...)) << std::endl;
     }
 
     template <typename... Args>
-    void panic(std::format_string<Args...> fmt, Args &&...args)
+    void panic(const std::string &_fmt, Args &&...args)
     {
-        std::cerr << std::format("[{}][PANIC] {}", name, std::format(fmt, std::forward<Args>(args)...)) << std::endl;
+        std::cerr << fmt("[{}][PANIC] {}", name, fmt(_fmt, args...)) << std::endl;
         std::exit(1);
     }
 };
