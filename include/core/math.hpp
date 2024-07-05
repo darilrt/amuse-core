@@ -1048,7 +1048,7 @@ public:
     {
         float cos_half_theta = a.dot(b);
 
-        if (abs(cos_half_theta) >= 1.0f)
+        if (std::abs(cos_half_theta) >= 1.0f)
         {
             return a;
         }
@@ -1056,7 +1056,7 @@ public:
         float half_theta = acos(cos_half_theta);
         float sin_half_theta = sqrt(1.0f - cos_half_theta * cos_half_theta);
 
-        if (abs(sin_half_theta) < 0.001f)
+        if (std::abs(sin_half_theta) < 0.001f)
         {
             return Quat(
                 (a.i * 0.5f + b.i * 0.5f),
