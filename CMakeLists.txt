@@ -6,7 +6,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Project name
 project(AmuseCore)
-set(project_name "AmuseCore")
 
 # Add definition for shared library
 add_compile_definitions(AMUSE_CORE_EXPORT)
@@ -21,17 +20,18 @@ file(GLOB_RECURSE SOURCES
     src/imgui/backends/*.cpp)
 
 
-add_library(${project_name} SHARED ${SOURCES})
+add_library(AmuseCore SHARED ${SOURCES})
 
 
 # Add the include directory
-target_include_directories(${project_name} PUBLIC include)
+target_include_directories(AmuseCore PUBLIC include)
+target_include_directories(AmuseCore PUBLIC vendor/SDL/include)
 
 # Add the SDL2 library
-option(SDL_STATIC ON)
-option(SDL_SHARED OFF)
+set(SDL_STATIC ON)
+set(SDL_SHARED OFF)
 add_subdirectory(vendor/SDL EXCLUDE_FROM_ALL)
 
 # Link the SDL2 library
-target_link_libraries(${project_name} SDL2main)
-target_link_libraries(${project_name} SDL2)
+target_link_libraries(AmuseCore SDL2main)
+target_link_libraries(AmuseCore SDL2)
