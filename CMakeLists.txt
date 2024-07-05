@@ -22,9 +22,6 @@ file(GLOB_RECURSE SOURCES
 
 add_library(AmuseCore SHARED ${SOURCES})
 
-# Add flag -fPIC
-set_property(TARGET AmuseCore PROPERTY POSITION_INDEPENDENT_CODE ON)
-
 # Add the include directory
 target_include_directories(AmuseCore PUBLIC include)
 target_include_directories(AmuseCore PUBLIC vendor/SDL/include)
@@ -32,6 +29,7 @@ target_include_directories(AmuseCore PUBLIC vendor/SDL/include)
 # Add the SDL2 library
 set(SDL_STATIC ON)
 set(SDL_SHARED OFF)
+set(SDL_STATIC_PIC ON)
 add_subdirectory(vendor/SDL EXCLUDE_FROM_ALL)
 
 # Link the SDL2 library
