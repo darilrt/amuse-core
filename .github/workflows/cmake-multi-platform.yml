@@ -49,9 +49,9 @@ jobs:
 
     - name: Install GL
       shell: bash
+      if: matrix.os == 'ubuntu-latest'
       run: |
-        if: matrix.os == 'ubuntu-latest'
-          sudo apt-get install libgl1-mesa-dev libglu1-mesa-dev
+        sudo apt-get install libgl1-mesa-dev libglu1-mesa-dev
 
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
